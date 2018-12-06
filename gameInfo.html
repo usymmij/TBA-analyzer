@@ -1,13 +1,23 @@
 <!DOCTYPE HTML>
 <html>
+	<p id='demo'>qwer</p>
   <body>
-    <p id="demo"></p>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script>
- $("button").click(function(){
-   $("#demo").append("123");
+  
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+  
+    <button>qwertyuioplkjhgfdsaxcvbnmkjohsfydoiusa</button>
+  <script>
+
+ $('button').click(function(){
+ 
+  $.ajax({
+    url: 'https://www.thebluealliance.com/api/v3/status',
+    headers: {'X-TBA-Auth-Key': '7zyl3s8GtJlKGQs0jo053ZHYyY4pXaYJuYGNV85sOhF4cUAnyZ6idKGVVm6lLMpw'}    
+}).done(function(data) { 
+    $('p').replaceWith(data);
+   });
+
  });
 </script>
-    noenonone
   </body>
-</html>
+</html>	
