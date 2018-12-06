@@ -1,13 +1,13 @@
 <!DOCTYPE HTML>
 <html>
   <body>
+    <p id="demo"></p>
 <script>
   var xmlHttp = new XMLHttpRequest();
 
 xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
         var myArr = JSON.parse(this.responseText);
-        alert(myArr);
         myFunction(myArr);
     }
 };
@@ -19,10 +19,9 @@ function myFunction(arr) {
     var out = "";
     var i;
     for(i = 0; i < arr.length; i++) {
-        out += '<a href="' + arr[i].url + '">' + 
-        arr[i].display + '</a><br>';
+        out += arr[i].charAt(i);
     }
-    document.getElementById("id01").innerHTML = out;
+  document.getElementById("demo").innerHTML = out;
 }
 </script>
   </body>
