@@ -2,6 +2,8 @@
 
 <script>
 var hmm = '';
+var hmmKey;
+var hmmVal;
 var jqxhr = $.ajax({
 	url: 'https://www.thebluealliance.com/api/v3/team/frc4253',
 	dataType:'HTML',
@@ -9,8 +11,8 @@ var jqxhr = $.ajax({
 })
 $.when(jqxhr).done(function(data) { 
 	console.log(data);
-	hmm = jQuery.parseHTML(data);
-	hmm = JSON.parse(hmm);
+	hmm = data;
+	hmm = JSON.parse(hmm, (hmmKey, hmmVal));
 	console.log(hmm);
 });
 </script>
