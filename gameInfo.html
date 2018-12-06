@@ -5,14 +5,11 @@
 <script>
   var xmlHttp = new XMLHttpRequest();
 
-xmlhttp.setRequestHeader('X-TBA-Auth-Key', '7zyl3s8GtJlKGQs0jo053ZHYyY4pXaYJuYGNV85sOhF4cUAnyZ6idKGVVm6lLMpw');
-xmlhttp.open('GET','https://www.thebluealliance.com/api/v3/status',true);
-xmlhttp.send();
-  
   xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
         var myArr = JSON.parse(this.responseText);
-        myFunction(myArr);
+        //myFunction(myArr);
+        document.getElementById("demo").innerHTML = myArr.current_season;
     }
 };
 
@@ -23,6 +20,14 @@ function myFunction(arr) {
         out += arr[i].charAt(i);
     }
   document.getElementById("demo").innerHTML = out;
+}
+  function httpGet()
+{
+    var xmlHttp = new XMLHttpRequest();
+    //xmlhttp.setRequestHeader('X-TBA-Auth-Key', '7zyl3s8GtJlKGQs0jo053ZHYyY4pXaYJuYGNV85sOhF4cUAnyZ6idKGVVm6lLMpw');
+    xmlHttp.open('GET','https://www.thebluealliance.com/api/v3/status',true ); // false for synchronous request
+    xmlHttp.send(null);
+    return xmlHttp.responseText;
 }
 </script>
   </body>
