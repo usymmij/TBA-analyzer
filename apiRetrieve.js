@@ -1,13 +1,5 @@
-<!DOCTYPE HTML>
-<html>
-	<p id='demo'>qwer</p>
-	<div></div>
-  <body>
-  
-  <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
-  
-    <button>qwertyuioplkjhgfdsaxcvbnmkjohsfydoiusa</button>
-  <script>
+src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'
+ 
 
  $('button').click(function(){
  var hmm = '';
@@ -23,6 +15,3 @@ $.when(jqxhr).done(function(data) {
    $('div').append(hmm);
    });
  });
-</script>
-  </body>
-</html>	
