@@ -24,8 +24,8 @@ function myFunction(arr) {
   function httpGet()
 {
     var xmlHttp = new XMLHttpRequest();
-    //xmlhttp.setRequestHeader('X-TBA-Auth-Key', '7zyl3s8GtJlKGQs0jo053ZHYyY4pXaYJuYGNV85sOhF4cUAnyZ6idKGVVm6lLMpw');
-    xmlHttp.open('GET','https://www.thebluealliance.com/api/v3/status',true ); // false for synchronous request
+    xmlhttp.setRequestHeader("X-TBA-Auth-Key", "7zyl3s8GtJlKGQs0jo053ZHYyY4pXaYJuYGNV85sOhF4cUAnyZ6idKGVVm6lLMpw");
+    xmlHttp.open("GET","https://www.thebluealliance.com/api/v3/status",true ); // false for synchronous request
     xmlHttp.send(null);
     return xmlHttp.responseText;
 }
