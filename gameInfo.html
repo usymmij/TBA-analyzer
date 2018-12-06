@@ -2,33 +2,11 @@
 <html>
   <body>
     <p id="demo"></p>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
-  var xmlHttp = new XMLHttpRequest();
-
-  xmlhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-        var myArr = JSON.parse(this.responseText);
-        //myFunction(myArr);
-        document.getElementById("demo").innerHTML = myArr.current_season;
-    }
-};
-httpGet();
-function myFunction(arr) {
-    var out = "";
-    var i;
-    for(i = 0; i < arr.length; i++) {
-        out += arr[i].charAt(i);
-    }
-  document.getElementById("demo").innerHTML = out;
-}
-  function httpGet()
-{
-    var xmlHttp = new XMLHttpRequest();
-    xmlhttp.setRequestHeader("X-TBA-Auth-Key", "7zyl3s8GtJlKGQs0jo053ZHYyY4pXaYJuYGNV85sOhF4cUAnyZ6idKGVVm6lLMpw");
-    xmlHttp.open("GET","https://www.thebluealliance.com/api/v3/status",false); // false for synchronous request
-    xmlHttp.send(null);
-    return xmlHttp.responseText;
-}
+ $("button").click(function(){
+   $("#demo").append("123);
+ });
 </script>
     okljhgf
   </body>
