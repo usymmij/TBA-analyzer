@@ -19,11 +19,13 @@
         console.log(yearNWeeks);
         //lotta code in one line
         $("#woahst").replaceWith("<p style='font-family:Verdana; font-size:80px;'>Loading...<style>body{background-image: url('https://media.giphy.com/media/TvLuZ00OIADoQ/giphy.gif');background-repeat: no-repeat;background-position-x: 300px;background-position-y:-40px;background-color: #1874D2;}</style></p>");
+        TBAretrieve("events/"+yearNWeeks[0]);
         for(var i = 1; i<7; i++){
           if(yearNWeeks[i] == 1){
-            TBAretrieve("events/"+yearNWeeks[0]);
-            for(var i = 0; i < hmm.length; i++){
-              console.log(hmm[i]["key"]);
+            for(var z = 0; z < hmm.length; z++){
+              if(hmm[z]["week"] == i){
+                console.log(hmm[z]["key"]);
+              }
             }
           }
         }
