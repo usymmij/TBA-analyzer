@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
 <html>
+
 <body>
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
     <script src='apiRetrieve.js'></script>
@@ -7,20 +8,34 @@
     <script>
       $(document).ready(function(){
           $("button").click(function(){
-          $("#yearinput").replaceWith("<input placeholder='put the year here{oldest is 2016}' type='text' name='yearInput'><br>");
+          $("#yearinput").replaceWith("<input placeholder='put the year here' type='text' name='yearInput'><br>");
         });
       });
     </script>
 
     <script>
+      function split(){
+        var yearNWeeks = start(oof(0), oof(1));
+        console.log(yearNWeeks);
+        //lotta code in one line
+        $("#woahst").replaceWith("<p style='font-family:Verdana; font-size:80px;'>Loading...<style>body{background-image: url('https://media.giphy.com/media/TvLuZ00OIADoQ/giphy.gif');background-repeat: no-repeat;background-position-x: 300px;background-position-y:-40px;background-color: #1874D2;}</style></p>");
+        for(var i = 1; i<7; i++){
+          if(yearNWeeks[i] == 1){
+            TBAretrieve("events/"+yearNWeeks[0]);
+            for(var i = 0; i < hmm.length; i++){
+              console.log(hmm[i]["key"]);
+            }
+          }
+        }
+      }
+
       function oof(x){
+        TBAretrieve('status');
         if(x == 0){
-          TBAretrieve('status');
           x = hmm.current_season;
           return x;
         }
         if(x == 1){
-          TBAretrieve('status');
           x = hmm.max_season;
           return x;
         }
@@ -31,13 +46,13 @@
     </script>
     
   </p>
-    <p>
+    <div id="woahst">
     choose the weeks to include in the calculation
     <br>
     
-    <form action="javascript:console.log(start(oof(0), oof(1)));">
+    <form action="javascript:split();">
         <div id="yearinput">
-          <button>click to compute data from different year</button><br>
+          <button>click to compute data from different year (oldest year allowed is 2016)</button><br>
         </div><br>
       <input type="checkbox" name="w1" value="true">week 1</input><br>
       <input type="checkbox" name="w2" value="true">week 2</input><br>
@@ -48,6 +63,6 @@
       <input type="submit" value="enter"></input><br>
     </form>
   
-  </p>
+  </div>
 </body>
 </html>
