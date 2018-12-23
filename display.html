@@ -1,0 +1,35 @@
+<html>
+
+<body>
+    <div id='qwerty'>
+
+    </div>
+    <style>
+    </style>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    <script>
+        var yearNWeek = [];
+        var med;
+        var mea;
+        var tq;
+        var bq;
+        for (var o = 0; o < 7; o++) {
+            yearNWeek[o] = sessionStorage.getItem("stuff" + o);
+        }
+        for (var o = 1; o < 7; o++) {
+            if (yearNWeek[o] == 1) {
+                med = sessionStorage.getItem(o+'med');
+                mea = sessionStorage.getItem(o+'mea');
+                tq = sessionStorage.getItem(o+'tq');
+                bq = sessionStorage.getItem(o+'bq');
+                $('#qwerty').append('week ' + o + ': <br>');
+                $('#qwerty').append('median :' + med + '<br>');
+                $('#qwerty').append('mean :' + mea + '<br>');
+                $('#qwerty').append('top quarter :' + tq + '<br>');
+                $('#qwerty').append('bottom quarter :' + bq + '<br><br>');
+            }
+        }
+    </script>
+</body>
+
+</html>
