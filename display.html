@@ -1,32 +1,79 @@
 <html>
 
 <body>
+    <button onclick='window.print();'>click to print/save as pdf</button>
+    <br>
+    <br> this graph exludes any outliers[1.5xIQR]
+    <br>
+    <canvas id="myCanvas" width="1065" height="450" style="border:1px solid #000000;"></canvas>
+    <br>
+    <br>
     <div id='qwerty'>
-
+        Stats for weeks chosen:
+        <br>
+        <br>
     </div>
     <style>
     </style>
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
     <script>
+        var canvas = document.getElementById("myCanvas");
+        var ctx = canvas.getContext("2d");
         var yearNWeek = [];
         var med;
         var mea;
         var tq;
         var bq;
+        var t;
+        var b;
+        var width = 1;
+        var noU = 1;
+        canvas.height = sessionStorage.getItem('tallest');
         for (var o = 0; o < 7; o++) {
             yearNWeek[o] = sessionStorage.getItem("stuff" + o);
+            if(yearNWeek[o] == 1){
+                width += 1;
+            }
         }
+
+        //side label
+        for(var v = canvas.height - 10; v > 9; v -= 10){
+                    ctx.fillRect(0,v,10,1);
+                    ctx.font = "10px Arial";
+                    ctx.fillText(canvas.height - v, 12, v + 4);
+                }
+
         for (var o = 1; o < 7; o++) {
             if (yearNWeek[o] == 1) {
-                med = sessionStorage.getItem(o+'med');
-                mea = sessionStorage.getItem(o+'mea');
-                tq = sessionStorage.getItem(o+'tq');
-                bq = sessionStorage.getItem(o+'bq');
+                med = sessionStorage.getItem(o + 'med');
+                mea = sessionStorage.getItem(o + 'mea');
+                tq = sessionStorage.getItem(o + 'tq');
+                bq = sessionStorage.getItem(o + 'bq');
+                t = sessionStorage.getItem(o + 't');
+                b = sessionStorage.getItem(o + 'b');
+
                 $('#qwerty').append('week ' + o + ': <br>');
                 $('#qwerty').append('median :' + med + '<br>');
                 $('#qwerty').append('mean :' + mea + '<br>');
                 $('#qwerty').append('top quarter :' + tq + '<br>');
                 $('#qwerty').append('bottom quarter :' + bq + '<br><br>');
+
+                ctx.fillStyle = '#000000';
+                //whiskers
+                ctx.fillRect(((1065/width)*noU) - 1, canvas.height - t, 2, (t-tq));
+                ctx.fillRect(((1065/width)*noU) - 1, canvas.height - bq, 2,(bq-b));
+                //box
+                ctx.fillRect(((1065/width)*noU) - 30, canvas.height - tq, 60,(tq-bq));
+                ctx.fillStyle = '#f3f3f3';
+                ctx.fillRect(((1065/width)*noU) - 29, canvas.height - tq + 1, 58,(tq-2-bq));
+                ctx.fillStyle = '#000000';
+                //median
+                ctx.fillRect(((1065/width)*noU) - 30, canvas.height - med, 60,1);
+                //label
+                ctx.font = "15px Arial";
+                ctx.fillText("week " + o, ((1065/width)*noU) - 20, canvas.height - 17);
+
+                noU += 1;
             }
         }
     </script>

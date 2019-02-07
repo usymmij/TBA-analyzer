@@ -136,7 +136,7 @@ function matchScoreStuff(yearNWeeks) {
     }
 }
 
-function averages(arrayy, mode){
+function data2graph(arrayy, mode){
     if (mode === 'median') {
         return arrayy[Math.round(arrayy.length / 2)];
     }
@@ -152,5 +152,28 @@ function averages(arrayy, mode){
         }
         arrayy[0] = arrayy[0] / arrayy.length;
         return arrayy[0];
+    }
+    if(mode == 'top'){
+        var answer;
+        var IQR = (arrayy[Math.round(3 * (arrayy.length / 4))] - arrayy[Math.round(arrayy.length / 4)]);
+        IQR += arrayy[Math.round(3 * (arrayy.length / 4))];
+        for(var u = 0; u< arrayy.length;u++){
+            if(arrayy[u] <= IQR){
+                answer = IQR;
+            }
+        }
+        return answer;
+    }
+    if(mode == 'bottom'){
+        var answer;
+        var IQR = (arrayy[Math.round(3 * (arrayy.length / 4))] - arrayy[Math.round(arrayy.length / 4)]);
+        IQR = arrayy[Math.round((arrayy.length / 4))] - IQR;
+        for(var u = arrayy.length - 1; u>= 0;){
+            if(arrayy[u] >= IQR){
+                answer = IQR;
+            }
+            u -= 1;
+        }
+        return answer;
     }
 }
