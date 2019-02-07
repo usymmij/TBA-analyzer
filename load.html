@@ -3,7 +3,8 @@
   Calculating...
 </title>
 <p style='font-family:Verdana; font-size:80px;'>
-  Loading...
+  Calculating...
+
   <style>
     /* Center the loader */
 
@@ -91,6 +92,8 @@
   </style>-->
 </p>
 
+
+
 <body onload="myFunction()" style="margin:0;">
 </body>
 <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
@@ -120,14 +123,21 @@
     //use mScore[week - 1] or mScore[6] to access match scores
 
     //save results to session storage
+    var biggest = 100;
+    var big;
     for (var o = 1; o < 7; o++) {
       if (yearNWeeks[o] == 1) {
-        sessionStorage.setItem(o + 'med', averages(mScores[o - 1], 'median'));
-        sessionStorage.setItem(o + 'mea', averages(mScores[o - 1], 'mean'));
-        sessionStorage.setItem(o + 'tq', averages(mScores[o - 1], 'topq'));
-        sessionStorage.setItem(o + 'bq', averages(mScores[o - 1], 'bottomq'));
+        big = data2graph(mScores[o - 1], 'top');
+        sessionStorage.setItem(o + 'med', data2graph(mScores[o - 1], 'median'));
+        sessionStorage.setItem(o + 'mea', data2graph(mScores[o - 1], 'mean'));
+        sessionStorage.setItem(o + 'tq', data2graph(mScores[o - 1], 'topq'));
+        sessionStorage.setItem(o + 'bq', data2graph(mScores[o - 1], 'bottomq'));
+        sessionStorage.setItem(o + 't', big);
+        sessionStorage.setItem(o + 'b', data2graph(mScores[o - 1], 'bottom'));
+        if(big > biggest) biggest = big;
       }
     }
+    sessionStorage.setItem('tallest', biggest);
     //display results
     window.location.href = 'display.html';
   }
